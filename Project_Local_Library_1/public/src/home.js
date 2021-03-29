@@ -10,17 +10,17 @@ function getTotalAccountsCount(accounts) {
   return accounts.length;
 }
 
-// returns count of the books that are borrowed
+// returns count of the books that are borrowed using map and find methods
 function getBooksBorrowedCount(books) {
   let count = 0;
-  for (let i = 0; i < books.length; i++) {
-    const borrow = books[i].borrows;
-    for (let j = 0; j < borrow.length; j++) {
-      if (!borrow[j].returned) {
+  totalBorrowBooks = books.map((book) => {
+    const bookBorrows = book.borrows;
+    bookBorrows.find((borrow) => {
+      if (!borrow.returned) {
         count += 1;
       }
-    }
-  }
+    });
+  });
   return count;
 }
 
