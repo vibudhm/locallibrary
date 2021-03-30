@@ -15,11 +15,7 @@ function getBooksBorrowedCount(books) {
   let count = 0;
   totalBorrowBooks = books.map((book) => {
     const bookBorrows = book.borrows;
-    bookBorrows.find((borrow) => {
-      if (!borrow.returned) {
-        count += 1;
-      }
-    });
+    count += bookBorrows.filter((borrow) => !borrow.returned).length;
   });
   return count;
 }
